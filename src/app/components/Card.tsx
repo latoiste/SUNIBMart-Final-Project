@@ -6,7 +6,9 @@ function Card({ product }: {product: Product | null}) {
     //make a loading card
     if (!product) {
         return (
-            <div>loading</div>
+            <div className="bg-gray-100 rounded-xl border-2 border-gray-100 w-60 h-95 flex-col">
+                
+            </div>
         )
     }
 

@@ -19,7 +19,7 @@ export default function Home() {
     <>
       <Navbar/>
       <Link href="/login">AAAAA</Link>
-      <Card product ={product}/>
+      <Card product ={product[12]}/>
     </>
   );
 }
