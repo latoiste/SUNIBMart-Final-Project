@@ -29,7 +29,7 @@ interface Product {
     price: number,
     rating: number,
     returnPolicy: string,
-    review: Review[],
+    reviews: Review[],
     shippingInformation: string,
     sku: string,
     stock: number,
