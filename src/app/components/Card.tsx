@@ -7,7 +7,7 @@ function Card({ product }: {product: Product | null}) {
     if (!product) {
         return (
             <div className="bg-gray-100 rounded-xl border-2 border-gray-100 w-60 h-95 flex-col">
-                
+                AAAAAAAAAAAAAAa
             </div>
         )
     }
@@ -15,8 +15,8 @@ function Card({ product }: {product: Product | null}) {
     const router = useRouter();
 
     return (
-        <div onClick={() => router.push(`/product/${product.id}`)} className="hover: cursor-pointer bg-gray-100 rounded-xl border-2 border-gray-100 w-60 h-95 flex-col">
-            <img src={product.thumbnail} alt="MMMMMMMMMMMMM" style={{backgroundColor: "white", width:"237px", height:"237px"}}/>
+        <div onClick={() => router.push(`/product/${product.id}`)} className="hover: cursor-pointer bg-gray-100 rounded-xl border-2 border-black w-60 h-100 my-2">
+            <img src={product.thumbnail} alt="MMMMMMMMMMMMM" className="w-[237px] h-[237px] bg-white rounded-xl"/>
             <p className="pl-2 flex">{product.title}</p>
             <p className="pl-2 font-bold text-2xl">${(product.price * ((100-product.discountPercentage)/100)).toFixed(2)}</p>
             {product.discountPercentage > 0 && (
