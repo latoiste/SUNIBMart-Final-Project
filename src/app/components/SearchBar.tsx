@@ -1,9 +1,16 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SearchBar() { 
     const [query, setQuery] = useState("");
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
     
-    return <input value={query} onChange={(q) => setQuery(q.target.value)} className="rounded-2xl bg-gray-100 p-2" type="text" placeholder="Looking for something?"/>
+    return mounted ? <input value={query} onChange={(q) => setQuery(q.target.value)} className="rounded-2xl bg-gray-100 p-2" type="text" placeholder="Looking for something?"/> 
+                   : null;
+    // return <input value={query} onChange={(q) => setQuery(q.target.value)} className="rounded-2xl bg-gray-100 p-2" type="text" placeholder="Looking for something?"/>
 }
-export default SearchBar
+export default SearchBar;

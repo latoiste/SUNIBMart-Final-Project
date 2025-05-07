@@ -1,6 +1,4 @@
 "use client";
-import Link from "next/link";
-import Card from "./components/Card";
 import Navbar from "./components/Navbar";
 import ProductList from "./components/ProductList";
 

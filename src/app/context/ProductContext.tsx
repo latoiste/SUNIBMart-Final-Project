@@ -11,7 +11,7 @@ export function useProductContext() {
         return null;
     }
     // console.log("product", product[0])
-    return product
+    return product;
 }
 
 function AppWrapper({ children }: Readonly<{
