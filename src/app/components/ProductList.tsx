@@ -7,8 +7,9 @@ import { useProductContext } from "../context/ProductContext";
 function ProductList() {
     const products = useProductContext();
     const list = products?.map(product => <Card key={product.id} product={product}></Card>)
+    
     return (
-        <div className="flex flex-wrap space-x-4">
+        <div className="flex flex-wrap space-x-4 justify-center">
             {list}
         </div>
     )

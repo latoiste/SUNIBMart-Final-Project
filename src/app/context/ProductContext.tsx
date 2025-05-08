@@ -23,7 +23,7 @@ function AppWrapper({ children }: Readonly<{
         const data = localStorage.getItem("ProductData")
 
         if (data === null) {
-            axios.get("https://dummyjson.com/products")
+            axios.get("https://dummyjson.com/products?limit=0")
                 .then((Response) => {
                     setProduct(Response.data.products);
                     localStorage.setItem("ProductData", JSON.stringify(Response.data.products))

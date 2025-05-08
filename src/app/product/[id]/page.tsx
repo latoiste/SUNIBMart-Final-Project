@@ -1,4 +1,5 @@
 "use client";
+import ImageList from "@/app/components/ImageList";
 import Navbar from "@/app/components/Navbar";
 import { useProductContext } from "@/app/context/ProductContext";
 import { use } from "react";
@@ -12,14 +13,20 @@ function ProductDetail({ params }: {params: {id: number}}) {
     if (!products) return null;
 
     const product = products[id-1];
-    
+    // const images = 
+    // const test = [1, 2, ...product.images];
+    // console.log(test);
     return (
-    <div>
-        <Navbar/>
-        <h1>HIIII {id}</h1>
-        {/* <h1>{product.title}</h1> */}
-        <img src={product.thumbnail} alt="" />
-    </div>
+        <>
+            <Navbar/>
+            <div className="pt-24 flex gap-4 justify-center">
+                <ImageList images={product.images}/>
+                <div className="w-96">
+                    <p className="font-bold text-3xl">{product.title}</p>
+                    <p className="font-bold">{product.title}</p>
+                </div>
+            </div>
+        </>
     );
 }
 export default ProductDetail;

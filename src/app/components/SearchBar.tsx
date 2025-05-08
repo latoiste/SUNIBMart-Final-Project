@@ -10,7 +10,6 @@ function SearchBar() {
     }, []);
     
     return mounted ? <input value={query} onChange={(q) => setQuery(q.target.value)} className="rounded-xl bg-gray-100 p-2 w-full" type="text" placeholder="Looking for something?"/> 
-                   : null;
-    // return <input value={query} onChange={(q) => setQuery(q.target.value)} className="rounded-2xl bg-gray-100 p-2" type="text" placeholder="Looking for something?"/>
+                   : <div className="rounded-2xl bg-gray-100 text-gray-400 p-2">Looking for something?</div>
 }
 export default SearchBar;
