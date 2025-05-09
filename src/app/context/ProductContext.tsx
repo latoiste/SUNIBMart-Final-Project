@@ -18,7 +18,7 @@ function AppWrapper({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
     const [product, setProduct] = useState<Product[] | null>(null)
-
+    
     useEffect(() => {
         const data = localStorage.getItem("ProductData")
 

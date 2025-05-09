@@ -8,15 +8,11 @@ import { use } from "react";
 // extract params dari props
 // di dalam params, ada attribute id
 function ProductDetail({ params }: {params: {id: number}}) {
-    const products = useProductContext();
     const id = use(params).id;
-
+    const products = useProductContext();
     if (!products) return null;
-
     const product = products[id-1];
-    // const images = 
-    // const test = [1, 2, ...product.images];
-    // console.log(test);
+    
     return (
         <>
             <Navbar/>

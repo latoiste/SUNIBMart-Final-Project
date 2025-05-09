@@ -2,17 +2,7 @@
 import { useRouter } from "next/navigation";
 import Product from "../types"
 
-function Card({ product }: {product: Product | null}) {
-    //make a loading card
-    // put in ProductList later
-    if (!product) {
-        return (
-            <div className="bg-gray-100 rounded-xl border-2 border-gray-100 w-45 h-70 flex-col">
-                AAAAAAAAAAAAAAa
-            </div>
-        )
-    }
-
+function Card({ product }: {product: Product}) {
     const router = useRouter();
 
     return (

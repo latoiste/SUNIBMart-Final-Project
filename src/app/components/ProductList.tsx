@@ -6,7 +6,7 @@ import { useProductContext } from "../context/ProductContext";
 //assigns each to Card as props
 function ProductList() {
     const products = useProductContext();
-    const list = products?.map(product => <Card key={product.id} product={product}></Card>)
+    const list = products?.map(product => <Card key={product.id} product={product}/>)
     
     return (
         <div className="flex flex-wrap space-x-4 justify-center">
