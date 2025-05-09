@@ -1,3 +1,35 @@
 @import "tailwindcss";
 
-
+@layer utilities {
+    .counterButton {
+        height: calc(var(--spacing) * 8);
+        padding: calc(var(--spacing) * 2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: var(--text-2xl);
+        line-height: var(--tw-leading, var(--text-2xl--line-height));
+        color: var(--color-yellow-500);
+        user-select: none;
+    }
+    .counterButton:hover {
+        background-color: var(--color-gray-200);
+    }
+    .checkoutButton {
+        width: 100%;
+        height: calc(var(--spacing) * 8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        font-size: var(--text-xl);
+        line-height: var(--tw-leading, var(--text-xl--line-height));
+        color: var(--color-gray-100);
+        border-radius: var(--radius-md);
+        background-color: var(--color-yellow-500);
+    }
+    .checkoutButton:hover {
+        cursor: pointer;
+    }
+}

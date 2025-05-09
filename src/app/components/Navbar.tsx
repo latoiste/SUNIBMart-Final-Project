@@ -5,7 +5,7 @@ import ShoppingCart from "./ShoppingCart";
 
 function Navbar() {
     return (
-        <div className="bg-white border-b-2 border-gray-100 h-24 flex items-center p-2 position: fixed top-0 w-full">
+        <div className="bg-white border-b-2 border-gray-100 h-24 w-full flex items-center p-2 position: fixed top-0">
             <h1 className="font-bold text-yellow-500 text-5xl">SUNIBMart</h1>
             
             <div className="m-4 grow">
