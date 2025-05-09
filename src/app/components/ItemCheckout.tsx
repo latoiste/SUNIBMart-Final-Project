@@ -1,14 +1,14 @@
-import Product from "../types";
+import { Product } from "../types";
 
-function CheckoutDisplay({ product, amount }: {product: Product, amount: number}) {
+function ItemCheckout({ product, amount }: {product: Product, amount: number}) {
     // products.product
     return (
-        <div className="w-96 h-36 space-x-2 flex rounded-2xl border-2 border-gray-100">
+        <div className="w-96 h-36 space-x-2 flex">
             <img className="border-e-2 border-gray-100 h-full w-auto" src={product.thumbnail} alt={product.title} />
             <div className="h-36 flex flex-col">
                 <div className="flex h-fit">
                     <p className="font-semibold">{product.title}</p>
-                    <p className="flex h-full items-center pe-2 font-semibold">x{amount}</p>
+                    <p className="flex h-full items-center px-2 font-semibold">x{amount}</p>
                 </div>
                 <div className="flex grow pe-2 items-center">
                     <p className="grow">Subtotal</p>
@@ -18,4 +18,4 @@ function CheckoutDisplay({ product, amount }: {product: Product, amount: number}
         </div>
     )
 }
-export default CheckoutDisplay;
+export default ItemCheckout;

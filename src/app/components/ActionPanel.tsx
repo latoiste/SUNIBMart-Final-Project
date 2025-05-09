@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Product from "../types";
+import { Product } from "../types";
 import { useRouter } from "next/navigation";
 
 function ActionPanel({ product }: {product: Product}) {

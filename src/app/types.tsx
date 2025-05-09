@@ -6,7 +6,7 @@ interface Review {
     reviewerName: string
 }
 
-interface Product {
+export interface Product {
     availabilityStatus: string,
     brand: string,
     category: string,
@@ -39,5 +39,3 @@ interface Product {
     warrantyInformation: string,
     weight: number
 }
-
-export default Product

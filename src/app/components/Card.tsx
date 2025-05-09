@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import Product from "../types"
+import { Product } from "../types"
 
 function Card({ product }: {product: Product}) {
     const router = useRouter();

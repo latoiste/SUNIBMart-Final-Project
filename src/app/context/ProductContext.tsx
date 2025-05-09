@@ -1,6 +1,6 @@
 "use client"
 import { createContext, useContext, useEffect, useState } from "react";
-import Product from "../types";
+import { Product } from "../types";
 import axios from "axios";
 
 const ProductContext = createContext<Product[] | null>(null);

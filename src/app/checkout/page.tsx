@@ -2,22 +2,37 @@
 import { useSearchParams } from "next/navigation";
 import { useProductContext } from "../context/ProductContext";
 import Navbar from "../components/Navbar";
-import CheckoutDisplay from "../components/CheckoutDisplay";
+import ItemCheckout from "../components/ItemCheckout";
 
 function Checkout() {
     const searchParams = useSearchParams();
     const id = Number(searchParams.get("id"));
     const amount = Number(searchParams.get("amount"));
-
+    
     const products = useProductContext();
     if (!products) return null;
     const product = products[id - 1];
+    const subtotal = (amount * product.price * ((100-product.discountPercentage)/100)).toFixed(2);
+    
     // TODO: make error page if id and amount inst given or id isnt found
     return (
         <>
             <Navbar/>
-            <div className="pt-24">
-                <CheckoutDisplay product={product} amount={amount}/>
+            <div className="flex pt-24 gap-4 justify-center">
+                {/* Payment method 
+                email address
+                shipping address
+                payment method
+                */}
+
+                <div className="border-2 border-gray-100 p-1">
+                    <p className="ps-3 pb-3 text-3xl font-semibold">Payment summary</p>
+                    <ItemCheckout product={product} amount={amount}/>
+                    <div className="flex px-3">
+                        <p className="grow">Total</p>
+                        <p>${subtotal}</p>
+                    </div>
+                </div>
             </div>
         </>
     )
