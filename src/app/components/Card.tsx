@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { Product } from "../types"
+import { GiRoundStar } from "react-icons/gi";
 
 function Card({ product }: {product: Product}) {
     const router = useRouter();
@@ -17,7 +18,7 @@ function Card({ product }: {product: Product}) {
                 </div>
             )}
             {/* ganti Rating jadi bintang */}
-            <p className="pl-2">Rating {product.rating}</p>
+            <p className="pl-2"><GiRoundStar/>{product.rating}</p>
             <p className="pl-2">{product.shippingInformation}</p>
         </div>
     )

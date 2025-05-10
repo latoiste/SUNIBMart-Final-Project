@@ -19,17 +19,21 @@ function ProductDetail({ params }: {params: {id: number}}) {
     return (
         <>
             <Navbar/>
-            <div className="pt-26 flex justify-center-safe gap-4">
-                <ImageList images={product.images}/>
-                <div className="flex-col">
-                    <div className="flex h-fit space-x-4">
-                        <ProductDescription product={product}/>
-                        <ActionPanel product={product}/>
+            <div className="pt-26 pb-4 flex justify-center-safe gap-4">
+                <div className="w-fit space-y-4">
+                    <div className="flex space-x-4">
+                        <ImageList images={product.images}/>
+                        <div className="space-y-2">
+                            <div className="flex min-h-100 h-fit space-x-4">
+                                <ProductDescription product={product}/>
+                                <ActionPanel product={product}/>
+                            </div>
+                            <ProductSpecifics product={product}/>
+                        </div>
                     </div>
-                    <ProductSpecifics product={product}/>
+                    <ReviewPanel product={product}/>
                 </div>
             </div>
-            <ReviewPanel product={product}/>
         </>
     );
 }

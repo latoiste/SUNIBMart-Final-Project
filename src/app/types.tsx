@@ -1,4 +1,4 @@
-interface Review {
+export interface Review {
     comment: string,
     date: string,
     rating: number,
