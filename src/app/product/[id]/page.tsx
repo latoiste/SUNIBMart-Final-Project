@@ -2,6 +2,9 @@
 import ActionPanel from "@/app/components/ActionPanel";
 import ImageList from "@/app/components/ImageList";
 import Navbar from "@/app/components/Navbar";
+import ProductDescription from "@/app/components/ProductDescription";
+import ProductSpecifics from "@/app/components/ProductSpecifics";
+import ReviewPanel from "@/app/components/ReviewPanel";
 import { useProductContext } from "@/app/context/ProductContext";
 import { use } from "react";
 
@@ -16,14 +19,17 @@ function ProductDetail({ params }: {params: {id: number}}) {
     return (
         <>
             <Navbar/>
-            <div className="pt-24 flex gap-4 justify-center">
+            <div className="pt-26 flex justify-center-safe gap-4">
                 <ImageList images={product.images}/>
-                <div className="w-96">
-                    <p className="font-bold text-4xl">{product.title}</p>
-                    <p className="font-bold">{product.title}</p>
+                <div className="flex-col">
+                    <div className="flex h-fit space-x-4">
+                        <ProductDescription product={product}/>
+                        <ActionPanel product={product}/>
+                    </div>
+                    <ProductSpecifics product={product}/>
                 </div>
-                <ActionPanel product={product}/>
             </div>
+            <ReviewPanel product={product}/>
         </>
     );
 }

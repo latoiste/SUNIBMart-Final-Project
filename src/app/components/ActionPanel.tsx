@@ -21,7 +21,7 @@ function ActionPanel({ product }: {product: Product}) {
     return (
         <div className="w-64 h-90 p-4 space-y-5 rounded-xl border-2 border-gray-100">
             <p className="text-3xl font-semibold">Order</p>
-            {/* TODO: tidy up counter */}
+            {/* TODO: tidy up counter check for availabilitystatus*/}
             <div className="w-32 h-8 flex items-center rounded-md border-2 border-gray-100 font-semibold">
                 <p onClick={decrement} className={`counterButton rounded-s-md ${amount > product.minimumOrderQuantity ? "hover:cursor-pointer" : "hover:cursor-not-allowed"}`}>-</p>
                 <p className="h-8 flex grow items-center justify-center border-x-2 border-gray-100">{amount}</p>
@@ -33,7 +33,6 @@ function ActionPanel({ product }: {product: Product}) {
                 <p>${subtotal}</p>
             </div>
             <p>{product.shippingInformation}</p>
-            {/* pass in like subtotal to ??? */}
             <button onClick={() => router.push(`/checkout?id=${product.id}&amount=${amount}`)} className="checkoutButton">Checkout</button>
             {/* TODO: add to shopping cart function */}
             <button className="checkoutButton">Add to cart</button>

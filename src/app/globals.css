@@ -11,10 +11,13 @@
         line-height: var(--tw-leading, var(--text-2xl--line-height));
         color: var(--color-yellow-500);
         user-select: none;
+        transition: ease-in;
+        transition-duration: 100ms;
     }
     .counterButton:hover {
         background-color: var(--color-gray-200);
     }
+
     .checkoutButton {
         width: 100%;
         height: calc(var(--spacing) * 8);
@@ -27,9 +30,28 @@
         line-height: var(--tw-leading, var(--text-xl--line-height));
         color: var(--color-gray-100);
         border-radius: var(--radius-md);
-        background-color: var(--color-yellow-500);
+        background-color: var(--color-amber-400);
+        transition: ease-in;
+        transition-duration: 100ms;
     }
     .checkoutButton:hover {
         cursor: pointer;
+        background-color: var(--color-yellow-500);
+    }
+    
+    .registerButton {
+        color: var(--color-yellow-500);
+        --tw-font-weight: var(--font-weight-semibold);
+        font-weight: var(--font-weight-semibold);
+        border-radius: var(--radius-2xl);
+        border-style: var(--tw-border-style);
+        border-width: 2px;
+        border-color: var(--color-yellow-500);
+        transition: ease-in;
+        transition-duration: 200ms;
+    }
+    .registerButton:hover {
+        background-color: var(--color-yellow-500);
+        color: var(--color-white);
     }
 }
