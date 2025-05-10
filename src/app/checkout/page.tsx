@@ -7,14 +7,14 @@ import ItemCheckout from "../components/ItemCheckout";
 function Checkout() {
     const searchParams = useSearchParams();
     const id = Number(searchParams.get("id"));
-    const amount = Number(searchParams.get("amount"));
+    const quantity = Number(searchParams.get("quantity"));
     
     const products = useProductContext();
     if (!products) return null;
     const product = products[id - 1];
-    const subtotal = (amount * product.price * ((100-product.discountPercentage)/100)).toFixed(2);
+    const subtotal = (quantity * product.price * ((100-product.discountPercentage)/100)).toFixed(2);
     
-    // TODO: make error page if id and amount inst given or id isnt found
+    // TODO: make error page if id and quantity inst given or id isnt found
     return (
         <>
             <Navbar/>
@@ -27,7 +27,7 @@ function Checkout() {
 
                 <div className="border-2 border-gray-100 p-1">
                     <p className="ps-3 pb-3 text-3xl font-semibold">Payment summary</p>
-                    <ItemCheckout product={product} amount={amount}/>
+                    <ItemCheckout product={product} quantity={quantity}/>
                     <div className="flex px-3">
                         <p className="grow">Total</p>
                         <p>${subtotal}</p>

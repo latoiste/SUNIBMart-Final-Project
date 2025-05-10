@@ -1,6 +1,6 @@
 import { Product } from "../types";
 
-function ItemCheckout({ product, amount }: {product: Product, amount: number}) {
+function ItemCheckout({ product, quantity }: {product: Product, quantity: number}) {
     // products.product
     return (
         <div className="w-96 h-36 space-x-2 flex">
@@ -8,11 +8,11 @@ function ItemCheckout({ product, amount }: {product: Product, amount: number}) {
             <div className="h-36 flex flex-col">
                 <div className="flex h-fit">
                     <p className="font-semibold">{product.title}</p>
-                    <p className="flex h-full items-center px-2 font-semibold">x{amount}</p>
+                    <p className="flex h-full items-center px-2 font-semibold">x{quantity}</p>
                 </div>
                 <div className="flex grow pe-2 items-center">
                     <p className="grow">Subtotal</p>
-                    <p className="">${(amount * product.price * ((100-product.discountPercentage)/100)).toFixed(2)}</p>
+                    <p className="">${(quantity * product.price * ((100-product.discountPercentage)/100)).toFixed(2)}</p>
                 </div>
             </div>
         </div>

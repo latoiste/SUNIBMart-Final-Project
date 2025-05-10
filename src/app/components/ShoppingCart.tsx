@@ -1,9 +1,10 @@
+import { AiOutlineShoppingCart } from "react-icons/ai";
+
 function ShoppingCart() {
     return (
-        <div className="bg-red-300">
-            {/* <img src="/bald.jpg" alt="AAAAA" /> */}
-            aaaaaa
-        </div>
+        <>
+            <AiOutlineShoppingCart className="text-4xl text-yellow-500"/>
+        </>
     )
 }
 export default ShoppingCart;

@@ -39,3 +39,15 @@ export interface Product {
     warrantyInformation: string,
     weight: number
 }
+
+export interface CartItem {
+    product: Product,
+    quantity: number,
+    price: number,
+}
+
+export interface User {
+    username: string,
+    password: string,
+    shoppingCart: CartItem[],
+}

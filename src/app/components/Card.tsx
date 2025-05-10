@@ -17,8 +17,7 @@ function Card({ product }: {product: Product}) {
                     <p className="pl-2 text-red-500">{product.discountPercentage}%</p>
                 </div>
             )}
-            {/* ganti Rating jadi bintang */}
-            <p className="pl-2"><GiRoundStar/>{product.rating}</p>
+            <p className="pl-2 flex items-center"><GiRoundStar className="text-yellow-500 me-1"/>{product.rating}</p>
             <p className="pl-2">{product.shippingInformation}</p>
         </div>
     )
