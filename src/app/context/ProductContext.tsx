@@ -22,7 +22,7 @@ function AppWrapper({ children }: Readonly<{
     useEffect(() => {
         const data = localStorage.getItem("ProductData")
 
-        if (data === null) {
+        if (!data) {
             axios.get("https://dummyjson.com/products?limit=0")
                 .then((Response) => {
                     setProduct(Response.data.products);

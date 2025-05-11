@@ -4,7 +4,10 @@ import InputField from "../components/InputField";
 
 function Login() {
     const [username, setUsername] = useState("");
+    const [usernameError, setUsernameError] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordError, setPasswordError] = useState("");
+
 
     return (
             <div className="h-screen flex justify-center items-center">
