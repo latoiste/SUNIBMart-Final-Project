@@ -1,5 +1,5 @@
 import Card from "./Card";
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../context/ProductProvider";
 
 //just displays all items in card
 //loops through all productContext

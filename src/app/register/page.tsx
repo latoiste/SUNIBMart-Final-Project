@@ -3,6 +3,7 @@ import { useState } from "react";
 import InputField from "../components/InputField";
 import Link from "next/link";
 import { User } from "../types";
+import { useUserContext } from "../context/UserProvider";
 
 function Register() {
     const [username, setUsername] = useState("");
@@ -12,13 +13,19 @@ function Register() {
 
     function registerUser() {
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
-        
+        const user = useUserContext();
+
         if (validateInput(users)) {
             users.push({
                 username: username,
                 password: password,
                 shoppingCart: [],
             });
+            user?.login({
+                username: username,
+                password: password,
+                shoppingCart: [],
+            })
             localStorage.setItem("Users", JSON.stringify(users));
         }
     }
@@ -36,7 +43,6 @@ function Register() {
             setUsernameError(() => "");
         }
 
-        //password minimal 8 letters
         if (password.length < 8) setPasswordError("Password must be at least 8 characters!")
         else if (password.length > 18) setPasswordError("Password too long!"); 
         else {

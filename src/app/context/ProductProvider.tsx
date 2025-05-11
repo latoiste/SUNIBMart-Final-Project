@@ -14,7 +14,7 @@ export function useProductContext() {
     return product;
 }
 
-function AppWrapper({ children }: Readonly<{
+function ProductProvider({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
     const [product, setProduct] = useState<Product[] | null>(null)
@@ -43,5 +43,4 @@ function AppWrapper({ children }: Readonly<{
         </ProductContext.Provider>
     )
 }
-
-export default AppWrapper
+export default ProductProvider

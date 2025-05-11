@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { useProductContext } from "../context/ProductContext";
+import { useProductContext } from "../context/ProductProvider";
 import Navbar from "../components/Navbar";
 import ItemCheckout from "../components/ItemCheckout";
 

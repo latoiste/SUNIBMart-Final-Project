@@ -5,7 +5,7 @@ import Navbar from "@/app/components/Navbar";
 import ProductDescription from "@/app/components/ProductDescription";
 import ProductSpecifics from "@/app/components/ProductSpecifics";
 import ReviewPanel from "@/app/components/ReviewPanel";
-import { useProductContext } from "@/app/context/ProductContext";
+import { useProductContext } from "@/app/context/ProductProvider";
 import { use } from "react";
 
 // extract params dari props
