@@ -47,6 +47,7 @@ export interface CartItem {
 }
 
 export interface User {
+    id: number,
     username: string,
     password: string,
     shoppingCart: CartItem[],

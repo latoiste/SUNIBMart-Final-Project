@@ -5,12 +5,14 @@ import Link from "next/link";
 import { User } from "../types";
 import { useUserContext } from "../context/UserProvider";
 import { useRouter } from "next/navigation";
+import { BarLoader } from "react-spinners";
 
 function Register() {
     const [username, setUsername] = useState("");
     const [usernameError, setUsernameError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const [loading, setLoading] = useState(false);
     const user = useUserContext();
     const router = useRouter()
 
@@ -18,16 +20,15 @@ function Register() {
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
         
         if (validateInput(users)) {
-            users.push({
+            setLoading(true);
+            const newUser = {
                 username: username,
+                id: users.length,
                 password: password,
                 shoppingCart: [],
-            });
-            user?.login({
-                username: username,
-                password: password,
-                shoppingCart: [],
-            });
+            }
+            users.push(newUser);
+            user?.login(newUser);
             localStorage.setItem("Users", JSON.stringify(users));
             //forces rerender
             router.push("/");
@@ -74,7 +75,7 @@ function Register() {
                         <InputField query={password} setQuery={setPassword} placeholder="Password"/>
                         <span className="ms-2 text-xs text-red-400">{passwordError}</span>
                     </div>
-                    <button onClick={() => registerUser()} className="btn-filled ">Register</button>
+                    <button onClick={() => registerUser()} className="btn-filled ">{loading ? <BarLoader color="white"/> : "Register"}</button>
                 </div>
             </div>
     )

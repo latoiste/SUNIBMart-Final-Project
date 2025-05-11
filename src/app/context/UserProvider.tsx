@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "../types";
 
 interface UserContextType {
@@ -12,11 +12,11 @@ interface UserContextType {
 const UserContext = createContext<UserContextType | null>(null);
 
 export function useUserContext() {
-    const aaaa = useContext(UserContext);
-    if (!aaaa) {
+    const user = useContext(UserContext);
+    if (!user) {
         return null;
     }
-    return aaaa;
+    return user;
 }
 
 function UserProvider({ children }: Readonly<{
@@ -24,15 +24,30 @@ function UserProvider({ children }: Readonly<{
 }>) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState<User | null>(null);
+    
+    useEffect(() => {
+        const currentUser = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        if (currentUser.loggedIn) {
+            login(currentUser.user);
+        }
+    }, []);
 
     function login(loggedInUser: User) {
-        setUser(() => loggedInUser);
-        setLoggedIn(() => true);
+        setUser(loggedInUser);
+        setLoggedIn(true);
+        localStorage.setItem("CurrentUser", JSON.stringify({
+            loggedIn: true,
+            user: loggedInUser,
+        }));
     }
 
     function logout() {
         setUser(() => null);
         setLoggedIn(() => false);
+        localStorage.setItem("CurrentUser", JSON.stringify({
+            loggedIn: false,
+            user: null,
+        }));
     }
 
     return (
