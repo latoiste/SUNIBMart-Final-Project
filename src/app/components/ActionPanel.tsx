@@ -33,9 +33,9 @@ function ActionPanel({ product }: {product: Product}) {
                 <p>${subtotal}</p>
             </div>
             <p>{product.shippingInformation}</p>
-            <button onClick={() => router.push(`/checkout?id=${product.id}&quantity=${quantity}`)} className="checkoutButton">Checkout</button>
+            <button onClick={() => router.push(`/checkout?id=${product.id}&quantity=${quantity}`)} className="btn-filled">Checkout</button>
             {/* TODO: add to shopping cart function */}
-            <button className="checkoutButton">Add to cart</button>
+            <button className="btn-filled">Add to cart</button>
         </div>
     )
 }

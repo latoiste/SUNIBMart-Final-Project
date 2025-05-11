@@ -18,12 +18,11 @@
         background-color: var(--color-gray-200);
     }
 
-    .checkoutButton {
+    .btn-filled {
         width: 100%;
         height: calc(var(--spacing) * 8);
         display: flex;
         justify-content: center;
-        align-items: center;
         --tw-font-weight: var(--font-weight-semibold);
         font-weight: var(--font-weight-semibold);
         font-size: var(--text-xl);
@@ -34,12 +33,12 @@
         transition: ease-in;
         transition-duration: 100ms;
     }
-    .checkoutButton:hover {
+    .btn-filled:hover {
         cursor: pointer;
         background-color: var(--color-yellow-500);
     }
     
-    .registerButton {
+    .btn-outline {
         color: var(--color-yellow-500);
         --tw-font-weight: var(--font-weight-semibold);
         font-weight: var(--font-weight-semibold);
@@ -50,7 +49,7 @@
         transition: ease-in;
         transition-duration: 200ms;
     }
-    .registerButton:hover {
+    .btn-outline:hover {
         background-color: var(--color-yellow-500);
         color: var(--color-white);
     }
