@@ -20,7 +20,7 @@ function Navbar() {
                 <ShoppingCart/>
             </div>
             {user?.loggedIn ? 
-                <p onClick={() => user.logout()} className="me-6">Logged in as {user.user?.username}</p>
+                <p onClick={() => user.logout()} className="hover:cursor-pointer">Logged in as {user.user?.username}</p>
                 : 
                 <>
                     <Link href="/register" className="p-2 btn-outline">Register</Link>

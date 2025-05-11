@@ -23,12 +23,12 @@ function Register() {
             setLoading(true);
             const newUser = {
                 username: username,
-                id: users.length,
                 password: password,
                 shoppingCart: [],
-            }
+            };
             users.push(newUser);
             user?.login(newUser);
+            //add new user
             localStorage.setItem("Users", JSON.stringify(users));
             //forces rerender
             router.push("/");
@@ -49,7 +49,7 @@ function Register() {
         }
         
         if (password.length < 8) setPasswordError("Password must be at least 8 characters!")
-            else if (password.length > 18) setPasswordError("Password too long!"); 
+        else if (password.length > 18) setPasswordError("Password too long!"); 
         else {
             validPassword = true;
             setPasswordError("");

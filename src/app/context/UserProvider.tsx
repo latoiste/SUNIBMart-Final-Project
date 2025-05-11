@@ -27,9 +27,18 @@ function UserProvider({ children }: Readonly<{
     
     useEffect(() => {
         const currentUser = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
+        const usernames = users.map(user => user.username);
+
+        //kalo users ga ada di local storage
         if (currentUser.loggedIn) {
-            login(currentUser.user);
+            if (!usernames.includes(currentUser.user.username)) {
+                logout();
+            }
+            else login(currentUser.user);
         }
+
+
     }, []);
 
     function login(loggedInUser: User) {
@@ -42,8 +51,8 @@ function UserProvider({ children }: Readonly<{
     }
 
     function logout() {
-        setUser(() => null);
-        setLoggedIn(() => false);
+        setUser(null);
+        setLoggedIn(false);
         localStorage.setItem("CurrentUser", JSON.stringify({
             loggedIn: false,
             user: null,
