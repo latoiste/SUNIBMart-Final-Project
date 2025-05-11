@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext, useState } from "react";
 import { User } from "../types";
 
@@ -8,14 +9,14 @@ interface UserContextType {
     logout: () => void;
 }
 
-const UserContext = createContext<UserContextType | null>(null)
+const UserContext = createContext<UserContextType | null>(null);
 
 export function useUserContext() {
-    const user = useContext(UserContext);
-    if (!user) {
+    const aaaa = useContext(UserContext);
+    if (!aaaa) {
         return null;
     }
-    return user;
+    return aaaa;
 }
 
 function UserProvider({ children }: Readonly<{
@@ -25,13 +26,13 @@ function UserProvider({ children }: Readonly<{
     const [user, setUser] = useState<User | null>(null);
 
     function login(loggedInUser: User) {
-        setUser(loggedInUser);
-        setLoggedIn(true);
+        setUser(() => loggedInUser);
+        setLoggedIn(() => true);
     }
 
     function logout() {
-        setUser(null);
-        setLoggedIn(false);
+        setUser(() => null);
+        setLoggedIn(() => false);
     }
 
     return (

@@ -4,17 +4,19 @@ import InputField from "../components/InputField";
 import Link from "next/link";
 import { User } from "../types";
 import { useUserContext } from "../context/UserProvider";
+import { useRouter } from "next/navigation";
 
 function Register() {
     const [username, setUsername] = useState("");
     const [usernameError, setUsernameError] = useState("");
     const [password, setPassword] = useState("");
     const [passwordError, setPasswordError] = useState("");
+    const user = useUserContext();
+    const router = useRouter()
 
     function registerUser() {
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
-        const user = useUserContext();
-
+        
         if (validateInput(users)) {
             users.push({
                 username: username,
@@ -25,8 +27,10 @@ function Register() {
                 username: username,
                 password: password,
                 shoppingCart: [],
-            })
+            });
             localStorage.setItem("Users", JSON.stringify(users));
+            //forces rerender
+            router.push("/");
         }
     }
     
@@ -34,17 +38,17 @@ function Register() {
         const usernames = users.map(user => user.username.toLowerCase());
         var validName = false;
         var validPassword = false;
-
-        if (username.length < 8) setUsernameError(() => "Username must be at least 8 characters!");
-        else if (username.length > 18) setUsernameError(() => "Username too long!"); 
-        else if (usernames.includes(username.toLowerCase())) setUsernameError(() => "Username taken!");
+        
+        if (username.length < 8) setUsernameError("Username must be at least 8 characters!");
+        else if (username.length > 18) setUsernameError("Username too long!"); 
+        else if (usernames.includes(username.toLowerCase())) setUsernameError("Username taken!");
         else {
             validName = true;
-            setUsernameError(() => "");
+            setUsernameError("");
         }
-
+        
         if (password.length < 8) setPasswordError("Password must be at least 8 characters!")
-        else if (password.length > 18) setPasswordError("Password too long!"); 
+            else if (password.length > 18) setPasswordError("Password too long!"); 
         else {
             validPassword = true;
             setPasswordError("");
