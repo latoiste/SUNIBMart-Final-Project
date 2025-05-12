@@ -1,10 +1,11 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { User } from "../types";
+import { CartItem, User } from "../types";
 
 interface UserContextType {
     loggedIn: boolean;
     user: User | null;
+    addToCart: (item: CartItem) => void;
     login: (loggedInUser: User) => void;
     logout: () => void;
 }
@@ -22,24 +23,40 @@ export function useUserContext() {
 function UserProvider({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
+    //for session persistance
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     
+    //for login persistance kalo refresh
     useEffect(() => {
-        const currentUser = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
-        const usernames = users.map(user => user.username);
+        const usernames: string[] = users.map(user => user.username);
 
-        //kalo users ga ada di local storage
         if (currentUser.loggedIn) {
+            //kalo user tbtb ga ada di local storage
             if (!usernames.includes(currentUser.user.username)) {
                 logout();
             }
             else login(currentUser.user);
         }
-
-
     }, []);
+
+    //no nded useeffect just use method
+    function addToCart(item: CartItem) {
+        const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
+        const userId: number = users.findIndex(user => {
+            return user.username === currentUser.user.username;
+        });
+        const user = users[userId];
+
+        currentUser.user.shoppingCart.push(item);
+        user.shoppingCart.push(item);
+        
+        localStorage.setItem("CurrentUser", JSON.stringify(currentUser));
+        localStorage.setItem("Users", JSON.stringify(users));
+    }
 
     function login(loggedInUser: User) {
         setUser(loggedInUser);
@@ -60,7 +77,7 @@ function UserProvider({ children }: Readonly<{
     }
 
     return (
-        <UserContext.Provider value = {{loggedIn, user, login, logout}}>
+        <UserContext.Provider value = {{loggedIn, user, addToCart, login, logout}}>
             {children}
         </UserContext.Provider>
     )

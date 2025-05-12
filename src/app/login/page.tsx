@@ -16,25 +16,18 @@ function Login() {
     
     function loginUser() {
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
-        var loggedInUser: User | null = null;
-        users.forEach(user => {
-            if (username === user.username && password === user.password) {
-                loggedInUser = {
-                    username: user.username,
-                    password: user.password,
-                    shoppingCart: user.shoppingCart,
-                }
-            }
+        const loggedInUser: User | undefined =  users.find((user) => {
+            return username === user.username && password === user.password
         });
+
+        // console.log(loggedInUser);
 
         if (loggedInUser) {
             setLoading(true);
             user?.login(loggedInUser);
-
             router.push("/");
         }
         else setError("Username or password doesn't match!")
-        
     }
     
     return (

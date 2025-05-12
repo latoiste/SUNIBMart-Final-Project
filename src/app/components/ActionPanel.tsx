@@ -1,16 +1,33 @@
 "use client";
 import { useState } from "react";
-import { Product } from "../types";
+import { CartItem, Product } from "../types";
 import { useRouter } from "next/navigation";
+import { useUserContext } from "../context/UserProvider";
 
 function ActionPanel({ product }: {product: Product}) {
     const [quantity, setQuantity] = useState(product.minimumOrderQuantity);
-    const router = useRouter();
     const subtotal = (quantity * product.price * ((100-product.discountPercentage)/100)).toFixed(2);
+    const router = useRouter();
+    const user = useUserContext();
+
+    function handleShoppingCart() {
+        if (user?.loggedIn) {
+            const item: CartItem = {
+                product: product,
+                quantity: quantity,
+                price: Number(subtotal),
+            }
+            user.addToCart(item);
+        }
+        else {
+            router.push("/register");
+        }
+    }
 
     function increment() {
-        if (quantity < product.stock)
+        if (quantity < product.stock) {
             setQuantity(quantity + 1);
+        }
     }
 
     function decrement() {
@@ -35,7 +52,7 @@ function ActionPanel({ product }: {product: Product}) {
             <p>{product.shippingInformation}</p>
             <button onClick={() => router.push(`/checkout?id=${product.id}&quantity=${quantity}`)} className="btn-filled">Checkout</button>
             {/* TODO: add to shopping cart function */}
-            <button className="btn-filled">Add to cart</button>
+            <button onClick={() => handleShoppingCart()} className="btn-filled">Add to cart</button>
         </div>
     )
 }
