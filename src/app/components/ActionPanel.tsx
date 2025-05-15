@@ -17,7 +17,10 @@ function ActionPanel({ product }: {product: Product}) {
                 product: product,
                 quantity: quantity,
             }
-            user.addToCart(item);
+            const shoppingCart: CartItem[] | undefined = user.user?.shoppingCart;
+            const duplicateItem: CartItem | undefined = shoppingCart?.find(cartItem => cartItem.product.id === item.product.id);
+            
+            duplicateItem ? user.updateCart(item, item.quantity) : user.addToCart(item);
         }
         else {
             router.push("/register");
