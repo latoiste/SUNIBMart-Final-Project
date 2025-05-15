@@ -6,6 +6,7 @@ interface UserContextType {
     loggedIn: boolean;
     user: User | null;
     addToCart: (item: CartItem) => void;
+    updateCart: (item: CartItem, newQuantity: number) => void;
     login: (loggedInUser: User) => void;
     logout: () => void;
 }
@@ -54,6 +55,31 @@ function UserProvider({ children }: Readonly<{
         currentUser.user.shoppingCart.push(item);
         user.shoppingCart.push(item);
         
+        //updates userContext
+        setUser(currentUser.user);
+        localStorage.setItem("CurrentUser", JSON.stringify(currentUser));
+        localStorage.setItem("Users", JSON.stringify(users));
+    }
+
+    function updateCart(item: CartItem, newQuantity: number) {
+        const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
+        const shoppingCart = currentUser.user.shoppingCart;
+
+        const userId: number = users.findIndex(user => {
+            return user.username === currentUser.user.username;
+        });
+        const itemId: number = shoppingCart.findIndex(cartItem => {
+            return cartItem.product.id === item.product.id;
+        });
+
+        const user = users[userId];
+        const cartItem = shoppingCart[itemId];
+        
+        cartItem.quantity = newQuantity;
+        user.shoppingCart[itemId].quantity = newQuantity;
+        
+        setUser(user);
         localStorage.setItem("CurrentUser", JSON.stringify(currentUser));
         localStorage.setItem("Users", JSON.stringify(users));
     }
@@ -77,7 +103,7 @@ function UserProvider({ children }: Readonly<{
     }
 
     return (
-        <UserContext.Provider value = {{loggedIn, user, addToCart, login, logout}}>
+        <UserContext.Provider value = {{loggedIn, user, addToCart, updateCart, login, logout}}>
             {children}
         </UserContext.Provider>
     )

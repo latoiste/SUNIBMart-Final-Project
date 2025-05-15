@@ -16,9 +16,7 @@ function Navbar() {
             <div className="grow">
                 <InputField query={query} setQuery={setQuery} placeholder="Looking for something?"/>
             </div>
-            <div>
-                <ShoppingCart/>
-            </div>
+            <ShoppingCart/>
             {user?.loggedIn ? 
                 <p onClick={() => user.logout()} className="hover:cursor-pointer">Logged in as {user.user?.username}</p>
                 : 

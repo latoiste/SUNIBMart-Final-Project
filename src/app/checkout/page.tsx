@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { useProductContext } from "../context/ProductProvider";
 import Navbar from "../components/Navbar";
-import ItemCheckout from "../components/ItemCheckout";
+import ItemDisplay from "../components/ItemDisplay";
 
 function Checkout() {
     const searchParams = useSearchParams();
@@ -25,9 +25,9 @@ function Checkout() {
                 payment method
                 */}
 
-                <div className="border-2 border-gray-100 p-1">
+                <div className="border-2 w-1/4 border-gray-100 p-1">
                     <p className="ps-3 pb-3 text-3xl font-semibold">Payment summary</p>
-                    <ItemCheckout product={product} quantity={quantity}/>
+                    <ItemDisplay product={product} amount={quantity}/>
                     <div className="flex px-3">
                         <p className="grow">Total</p>
                         <p>${subtotal}</p>
