@@ -10,7 +10,7 @@ function ItemDisplay({ product, quantity, setQuantity, showCounter = false }: {p
         <div className="flex w-full h-auto space-x-2">
             <img className={`border-e-2 border-gray-100 size-24`} src={product.thumbnail} alt={product.title} />
             <div className="w-full h-auto flex flex-col justify-between">
-                <div className="flex h-fit">
+                <div className="flex space-x-2 h-fit justify-between">
                     <p className="font-semibold">{product.title}</p>
                     <p className="flex h-full items-center px-2 font-semibold">x{quantity}</p>
                 </div>

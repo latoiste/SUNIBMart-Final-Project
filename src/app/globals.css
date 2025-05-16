@@ -38,6 +38,14 @@
         cursor: pointer;
         background-color: var(--color-yellow-500);
     }
+
+    .btn-filled--red {
+        background-color: var(--color-red-500);
+    }
+
+    .btn-filled--red:hover {
+        background-color: var(--color-red-600);
+    }
     
     .btn-outline {
         color: var(--color-yellow-500);

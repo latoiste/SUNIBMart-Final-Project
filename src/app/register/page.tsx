@@ -37,8 +37,8 @@ function Register() {
     
     function validateInput(users: User[]) {
         const usernames = users.map(user => user.username.toLowerCase());
-        var validName = false;
-        var validPassword = false;
+        let validName = false;
+        let validPassword = false;
         
         if (username.length < 8) setUsernameError("Username must be at least 8 characters!");
         else if (username.length > 18) setUsernameError("Username too long!"); 

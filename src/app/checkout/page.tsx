@@ -27,7 +27,7 @@ function Checkout() {
 
                 <div className="border-2 w-1/4 border-gray-100 p-1">
                     <p className="ps-3 pb-3 text-3xl font-semibold">Payment summary</p>
-                    <ItemDisplay product={product} amount={quantity}/>
+                    {/* <ItemDisplay product={product} quantity={quantity}/> */}
                     <div className="flex px-3">
                         <p className="grow">Total</p>
                         <p>${subtotal}</p>

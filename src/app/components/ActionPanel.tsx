@@ -16,6 +16,7 @@ function ActionPanel({ product }: {product: Product}) {
             const item: CartItem = {
                 product: product,
                 quantity: quantity,
+                price: Number(subtotal),
             }
             const shoppingCart: CartItem[] | undefined = user.user?.shoppingCart;
             const duplicateItem: CartItem | undefined = shoppingCart?.find(cartItem => cartItem.product.id === item.product.id);

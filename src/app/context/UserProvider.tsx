@@ -65,6 +65,7 @@ function UserProvider({ children }: Readonly<{
         const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
         const shoppingCart = currentUser.user.shoppingCart;
+        const newPrice = Number((newQuantity * item.product.price * ((100-item.product.discountPercentage)/100)).toFixed(2));
 
         const userId: number = users.findIndex(user => {
             return user.username === currentUser.user.username;
@@ -78,6 +79,9 @@ function UserProvider({ children }: Readonly<{
         
         cartItem.quantity = newQuantity;
         user.shoppingCart[itemId].quantity = newQuantity;
+        
+        cartItem.price = newPrice;
+        user.shoppingCart[itemId].price = newPrice;
         
         setUser(user);
         localStorage.setItem("CurrentUser", JSON.stringify(currentUser));

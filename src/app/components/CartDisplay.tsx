@@ -8,13 +8,14 @@ function CartDisplay({ item }: {item: CartItem}) {
     const user = useUserContext();
 
     useEffect(() => {
-        console.log("yoo", quantity);
         user?.updateCart(item, quantity);
-        console.log(user?.user);
     }, [quantity]);
 
     return (
-        <ItemDisplay product={item.product} quantity={quantity} setQuantity={setQuantity} showCounter={true}/>
+        <>
+            <ItemDisplay product={item.product} quantity={quantity} setQuantity={setQuantity} showCounter={true}/>
+            <button className="btn-filled btn-filled--red">Remove Item</button>
+        </>
     )
 }
 export default CartDisplay;
