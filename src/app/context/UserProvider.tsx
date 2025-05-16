@@ -7,6 +7,7 @@ interface UserContextType {
     user: User | null;
     addToCart: (item: CartItem) => void;
     updateCart: (item: CartItem, newQuantity: number) => void;
+    removeItem: (item: CartItem) => void;
     login: (loggedInUser: User) => void;
     logout: () => void;
 }
@@ -88,6 +89,28 @@ function UserProvider({ children }: Readonly<{
         localStorage.setItem("Users", JSON.stringify(users));
     }
 
+    function removeItem(item: CartItem) {
+        const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
+        const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
+        const shoppingCart = currentUser.user.shoppingCart;
+
+        const userId: number = users.findIndex(user => {
+            return user.username === currentUser.user.username;
+        });
+        const itemId: number = shoppingCart.findIndex(cartItem => {
+            return cartItem.product.id === item.product.id;
+        });
+
+        const user = users[userId];
+
+        shoppingCart.splice(itemId , 1);
+        user.shoppingCart.splice(itemId, 1);
+
+        setUser(user);
+        localStorage.setItem("CurrentUser", JSON.stringify(currentUser));
+        localStorage.setItem("Users", JSON.stringify(users));
+    }
+
     function login(loggedInUser: User) {
         setUser(loggedInUser);
         setLoggedIn(true);
@@ -107,7 +130,7 @@ function UserProvider({ children }: Readonly<{
     }
 
     return (
-        <UserContext.Provider value = {{loggedIn, user, addToCart, updateCart, login, logout}}>
+        <UserContext.Provider value = {{loggedIn, user, addToCart, updateCart, removeItem, login, logout}}>
             {children}
         </UserContext.Provider>
     )
