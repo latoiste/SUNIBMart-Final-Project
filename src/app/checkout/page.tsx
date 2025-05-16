@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useProductContext } from "../context/ProductProvider";
 import Navbar from "../components/Navbar";
 import ItemDisplay from "../components/ItemDisplay";
+import PaymentPanel from "../components/PaymentPanel";
 
 function Checkout() {
     const searchParams = useSearchParams();
@@ -18,17 +19,12 @@ function Checkout() {
     return (
         <>
             <Navbar/>
-            <div className="flex pt-24 gap-4 justify-center">
-                {/* Payment method 
-                email address
-                shipping address
-                payment method
-                */}
-
-                <div className="border-2 w-1/4 border-gray-100 p-1">
-                    <p className="ps-3 pb-3 text-3xl font-semibold">Payment summary</p>
-                    {/* <ItemDisplay product={product} quantity={quantity}/> */}
-                    <div className="flex px-3">
+            <div className="flex pt-26 justify-center">
+                <PaymentPanel/>
+                <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-s-0 border-gray-100">
+                    <p className="font-bold text-3xl text-yellow-500">Payment summary</p>
+                    <ItemDisplay product={product} quantity={quantity}/>
+                    <div className="flex justify-between border-t-2 border-gray-100 pt-3">
                         <p className="grow">Total</p>
                         <p>${subtotal}</p>
                     </div>

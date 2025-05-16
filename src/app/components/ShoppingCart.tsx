@@ -1,13 +1,11 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useUserContext } from "../context/UserProvider";
-import { useEffect, useState } from "react";
-import ItemDisplay from "./ItemDisplay";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 function ShoppingCart() {
     const [show, setShow] = useState(false);
     const user = useUserContext();
-    const shoppingCart = user?.user?.shoppingCart;
     const router = useRouter()
 
     return (

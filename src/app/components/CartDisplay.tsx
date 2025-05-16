@@ -14,7 +14,7 @@ function CartDisplay({ item }: {item: CartItem}) {
     return (
         <>
             <ItemDisplay product={item.product} quantity={quantity} setQuantity={setQuantity} showCounter={true}/>
-            <button onClick={() => user?.removeItem(item)} className="btn-filled btn-filled--red">Remove Item</button>
+            <button onClick={() => user?.removeItem(item)} className="btn-filled btn-filled--remove">Remove Item</button>
         </>
     )
 }

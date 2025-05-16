@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Product } from "../types";
 import Counter from "./Counter";
 
-function ItemDisplay({ product, quantity, setQuantity, showCounter = false }: {product: Product, quantity: number, setQuantity: Dispatch<SetStateAction<number>>, showCounter: boolean}) {
+function ItemDisplay({ product, quantity, setQuantity, showCounter = false }: {product: Product, quantity: number, setQuantity?: Dispatch<SetStateAction<number>>, showCounter?: boolean}) {
     const subtotal: string = (quantity * product.price * ((100-product.discountPercentage)/100)).toFixed(2)
 
     return (
