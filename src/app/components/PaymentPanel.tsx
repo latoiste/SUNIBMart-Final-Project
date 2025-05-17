@@ -1,17 +1,19 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import InputField from "./InputField";
+import { useRouter } from "next/navigation";
 
 function PaymentPanel() {
     const [disableButton, setDisableButton] = useState(true);
     const [shipping, setShipping] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
-
+    const router = useRouter();
+    
     useEffect(() => {
         (shipping && paymentMethod) ? setDisableButton(false) : setDisableButton(true);
     }, [shipping, paymentMethod]);
 
     return (
-        <div className="p-3 w-1/4 space-y-4 border-2 rounded-s-2xl border-gray-100">
+        <div className="p-3 w-1/4 h-fit space-y-4 border-2 rounded-s-2xl border-gray-100">
             <p className="font-bold text-3xl text-yellow-500">Checkout</p>
             <p className="text-2xl font-semibold">Shipping Address</p>
             <InputField query={shipping} setQuery={setShipping} placeholder="Shipping Address"/>
@@ -33,7 +35,7 @@ function PaymentPanel() {
                     <p className="font-semibold">Mastercard</p>
                 </div>
             </div>
-            <button disabled={disableButton} className={`btn-filled ${disableButton ? "btn-filled--gray" : ""}`}>Proceed Checkout</button>
+            <button disabled={disableButton} onClick={() => router.push("/")} className={`btn-filled ${disableButton ? "btn-filled--gray" : ""}`}>Proceed Checkout</button>
         </div>
     )
 }

@@ -19,7 +19,7 @@ function Checkout() {
     return (
         <>
             <Navbar/>
-            <div className="flex pt-26 justify-center">
+            <div className="flex pt-26 pb-4 justify-center">
                 <PaymentPanel/>
                 <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-s-0 border-gray-100">
                     <p className="font-bold text-3xl text-yellow-500">Payment summary</p>

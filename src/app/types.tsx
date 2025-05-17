@@ -8,7 +8,7 @@ export interface Review {
 
 export interface Product {
     availabilityStatus: string,
-    brand: string,
+    brand?: string,
     category: string,
     description: string,
     dimensions: {

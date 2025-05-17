@@ -7,7 +7,7 @@ function Card({ product }: {product: Product}) {
     const router = useRouter();
 
     return (
-        <div onClick={() => router.push(`/product/${product.id}`)} className="hover: cursor-pointer bg-gray-100 rounded-xl border-2 border-gray-100 w-45 h-90 my-2">
+        <div onClick={() => router.push(`/product/${product.id}`)} className="hover: cursor-pointer bg-gray-100 rounded-xl border-2 border-gray-100 w-45 h-90">
             <img loading="lazy" src={product.thumbnail} alt={product.title} className="w-[178px] h-[178px] bg-white rounded-xl"/>
             <p className="pl-2 flex">{product.title}</p>
             <p className="pl-2 font-bold text-2xl">${(product.price * ((100-product.discountPercentage)/100)).toFixed(2)}</p>

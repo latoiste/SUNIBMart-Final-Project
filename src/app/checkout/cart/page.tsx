@@ -21,9 +21,9 @@ function Cart() {
     return (
         <>
             <Navbar/>
-            <div className="flex justify-center pt-26">
+            <div className="flex justify-center pt-26 pb-4">
                 <PaymentPanel/>
-                <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-s-0 border-gray-100">
+                <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-gray-100">
                     <p className="font-bold text-3xl text-yellow-500">Your Cart</p>
                     {shoppingCart?.map(item => {
                         return <CartDisplay key={item.product.id} item={item}></CartDisplay>

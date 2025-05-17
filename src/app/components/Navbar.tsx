@@ -4,17 +4,25 @@ import InputField from "./InputField";
 import ShoppingCart from "./ShoppingCart";
 import { useState } from "react";
 import { useUserContext } from "../context/UserProvider";
+import { useRouter } from "next/navigation";
 
 function Navbar() {
     const [query, setQuery] = useState("");
+    const router = useRouter();
     const user = useUserContext();
     
+    function handleSubmit(event: React.KeyboardEvent<HTMLInputElement>) {
+        if (event.key === "Enter") {
+            router.push(`/search?query=${query}`)
+        }
+    }
+
     return (
         <div className="bg-white border-b-2 border-gray-100 h-24 w-full flex items-center px-8 space-x-6 fixed top-0">
             <Link href="/" className="font-bold text-yellow-500 text-5xl">SUNIBMart</Link>
             
             <div className="grow">
-                <InputField query={query} setQuery={setQuery} placeholder="Looking for something?"/>
+                <InputField query={query} setQuery={setQuery} placeholder="Looking for something?" handleSubmit={handleSubmit}/>
             </div>
             <ShoppingCart/>
             {user?.loggedIn ? 

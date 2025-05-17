@@ -33,7 +33,7 @@ function UserProvider({ children }: Readonly<{
     useEffect(() => {
         const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");
         const users: User[] = JSON.parse(localStorage.getItem("Users") || "[]");
-        const usernames: string[] = users.map(user => user.username);
+        const usernames = users.map(user => user.username);
 
         if (currentUser.loggedIn) {
             //kalo user tbtb ga ada di local storage
