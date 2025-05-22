@@ -20,19 +20,19 @@ function PaymentPanel() {
             <p className="text-2xl font-semibold">Payment Method</p>
             <div className="flex flex-col justify-between space-y-2">
                 <div className="flex space-x-2 items-center">
-                    <input onChange={(p) => setPaymentMethod(p.target.value)} type="radio" name="payment" value="bca"/>
+                    <input onChange={(p) => setPaymentMethod(p.target.value)} id="bca" type="radio" name="payment" value="bca"/>
                     <img className="w-10 h-auto" src="/bca-logo.png" alt="" />
-                    <p className="font-semibold">BCA Virtual Account</p>
+                    <label htmlFor="bca" className="font-semibold">BCA Virtual Account</label>
                 </div>
                 <div className="flex space-x-2 items-center">
-                    <input onChange={(p) => setPaymentMethod(p.target.value)} type="radio" name="payment" value="visa"/>
+                    <input onChange={(p) => setPaymentMethod(p.target.value)} id="visa" type="radio" name="payment" value="visa"/>
                     <img className="w-10 h-auto" src="/visa-logo.png" alt="" />
-                    <p className="font-semibold">VISA</p>
+                    <label htmlFor="visa" className="font-semibold">VISA</label>
                 </div>
                 <div className="flex space-x-2 items-center">
-                    <input onChange={(p) => setPaymentMethod(p.target.value)} type="radio" name="payment" value="mastercard"/>
+                    <input onChange={(p) => setPaymentMethod(p.target.value)} id="mastercard" type="radio" name="payment" value="mastercard"/>
                     <img className="w-10 h-auto" src="/mastercard-logo.png" alt="" />
-                    <p className="font-semibold">Mastercard</p>
+                    <label htmlFor="mastercard" className="font-semibold">Mastercard</label>
                 </div>
             </div>
             <button disabled={disableButton} onClick={() => router.push("/")} className={`btn-filled ${disableButton ? "btn-filled--gray" : ""}`}>Proceed Checkout</button>

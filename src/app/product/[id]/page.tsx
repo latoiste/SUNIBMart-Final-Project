@@ -10,7 +10,7 @@ import { use } from "react";
 
 // extract params dari props
 // di dalam params, ada attribute id
-function ProductDetail({ params }: {params: {id: number}}) {
+function ProductDetail({ params }: {params: Promise<{id: number}>}) {
     const id = use(params).id;
     const products = useProductContext();
     if (!products) return null;

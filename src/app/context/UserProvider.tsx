@@ -43,7 +43,7 @@ function UserProvider({ children }: Readonly<{
             else login(currentUser.user);
         }
     }, []);
-
+    //TODO: seperate this so its not in UserContext
     //no nded useeffect just use method
     function addToCart(item: CartItem) {
         const currentUser: {loggedIn: boolean, user: User} = JSON.parse(localStorage.getItem("CurrentUser") || "{}");

@@ -43,11 +43,22 @@ export interface Product {
 export interface CartItem {
     product: Product,
     quantity: number,
-    price: number,
+    price: number
 }
 
 export interface User {
     username: string,
     password: string,
     shoppingCart: CartItem[],
+}
+
+export interface Filter {
+    brand?: string[],
+    category?: string[],
+    tags?: string[],
+    minPrice?: number,
+    maxPrice?: number,
+    minRating?: number,
+    maxRating?: number,
+    availability?: boolean, 
 }
