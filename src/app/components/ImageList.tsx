@@ -11,7 +11,7 @@ function ImageList({ images }: {images: string[]}) {
                 {images.map((image, index) => 
                     <img onMouseEnter={() => setselected(index)} key={index} src={image} alt={`Image ${selected}`} 
                          className={`w-20 h-20 rounded-xl border-2 transition duration-300 opacity-100
-                                    ${index == selected ? "border-black" : "border-gray-100"}`}/>
+                                    ${index === selected ? "border-black" : "border-gray-100"}`}/>
                 )}
             </div>
         </div>

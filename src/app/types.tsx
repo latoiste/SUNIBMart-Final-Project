@@ -53,12 +53,11 @@ export interface User {
 }
 
 export interface Filter {
-    brand?: string[],
-    category?: string[],
-    tags?: string[],
+    brand: string[],
+    category: string[],
+    tags: string[],
     minPrice?: number,
     maxPrice?: number,
-    minRating?: number,
-    maxRating?: number,
+    rating: number,
     availability?: boolean, 
 }

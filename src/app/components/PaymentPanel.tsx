@@ -3,14 +3,10 @@ import InputField from "./InputField";
 import { useRouter } from "next/navigation";
 
 function PaymentPanel() {
-    const [disableButton, setDisableButton] = useState(true);
     const [shipping, setShipping] = useState("");
     const [paymentMethod, setPaymentMethod] = useState("");
     const router = useRouter();
-    
-    useEffect(() => {
-        (shipping && paymentMethod) ? setDisableButton(false) : setDisableButton(true);
-    }, [shipping, paymentMethod]);
+    const disableButton = !(shipping && paymentMethod);
 
     return (
         <div className="p-3 w-1/4 h-fit space-y-4 border-2 rounded-s-2xl border-gray-100">
