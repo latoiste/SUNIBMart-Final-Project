@@ -18,6 +18,7 @@ function BrandFilter() {
         const brand = product.brand;
         if (brand && !brands.includes(brand)) {
             brands.push(brand);
+            brands.sort();
         }
     });
 

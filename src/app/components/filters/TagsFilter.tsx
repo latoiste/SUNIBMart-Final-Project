@@ -20,6 +20,7 @@ function TagsFilter() {
         tag.forEach(element => {
             if (!tags.includes(element)) {
                 tags.push(element);
+                tags.sort();
             } 
         });
     });

@@ -18,6 +18,7 @@ function CategoryFilter() {
         const category = product.category;
         if (!categories.includes(category)) {
             categories.push(category);
+            categories.sort();
         }
     });
 

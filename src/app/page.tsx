@@ -7,14 +7,15 @@ import { applyFilters } from "./utils/ProductFilters";
 import { FaSearch } from "react-icons/fa";
 import FilterProvider, { useFilterContext } from "./context/FilterProvider";
 
-export default function Home() {
+function Home() {
   //biar dalem Content, useFilterContext ga null
   return (
     <FilterProvider>
       <Content/>
     </FilterProvider>
-  )
+  );
 }
+export default Home;
 
 function Content() {
   const { filter } = useFilterContext();
@@ -27,9 +28,9 @@ function Content() {
   return (
     <>
       <Navbar/>
-      <div className="flex pt-26">
+      <div className="flex pt-26 space-x-4">
         <div className="w-1/5">
-          <div className="px-4">
+          <div className="ps-2">
             <FilterPanel/>
           </div>
         </div>

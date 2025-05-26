@@ -18,7 +18,7 @@ function Navbar() {
     }
 
     return (
-        <div className="bg-white border-b-2 border-gray-100 h-24 w-full flex items-center px-8 space-x-6 fixed top-0">
+        <div className="bg-white border-b-2 border-gray-100 h-24 w-full flex items-center px-8 space-x-6 fixed top-0 z-20">
             <Link href="/" className="font-bold text-yellow-500 text-5xl">SUNIBMart</Link>
             
             <div className="grow">

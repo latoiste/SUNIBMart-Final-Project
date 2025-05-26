@@ -14,7 +14,7 @@ function Scrollable({ filterOptions, setSelected }: {filterOptions: string[], se
             {filterOptions.map((option, index) => 
                 <div key={index} className="h-8 w-fit flex flex-wrap items-center space-x-1">
                     <input onChange={() => handleChecked(option)} type="checkbox" id={option}/>
-                    <label htmlFor={option}>{option}</label>
+                    <label htmlFor={option}>{option[0].toUpperCase() + option.slice(1)}</label>
                 </div>
             )}
         </div>
