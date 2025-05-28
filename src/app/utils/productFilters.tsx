@@ -1,46 +1,46 @@
 import { Filter, Product } from "../types";
 
 export function applyFilters(products: Product[], filter: Filter) {
-    var filtered: Product[] = products;
+    var filteredProducts = products;
     
     //availability
     if (filter.availability) {
-        filtered = filtered.filter(availabilityFilter);
+        filteredProducts = filteredProducts.filter(filterAvailability);
     }
 
     //price
     if (filter.minPrice || filter.maxPrice) {
-        filtered = filtered.filter(product => priceFilter(product, filter));
+        filteredProducts = filteredProducts.filter(product => filterPrice(product, filter));
     }
 
     //rating
     if (filter.rating) {
-        filtered = filtered.filter(product => ratingFilter(product, filter));
+        filteredProducts = filteredProducts.filter(product => filterRating(product, filter));
     }
 
     //brand
     if (filter.brand.length > 0) {
-        filtered = filtered.filter(product => brandFilter(product, filter));
+        filteredProducts = filteredProducts.filter(product => filterBrand(product, filter));
     }
 
     //category
     if (filter.category.length > 0) {
-        filtered = filtered.filter(product => categoryFilter(product, filter));
+        filteredProducts = filteredProducts.filter(product => filterCategory(product, filter));
     }
 
     //tags
     if (filter.tags.length > 0) {
-        filtered = filtered.filter(product => tagsFilter(product, filter));
+        filteredProducts = filteredProducts.filter(product => filterTags(product, filter));
     } 
-    
-    return filtered;
+
+    return filteredProducts;
 }
 
-function availabilityFilter(product: Product) {
+function filterAvailability(product: Product) {
     return product.availabilityStatus !== "Out of Stock" && product.minimumOrderQuantity <= product.stock;
 }
 
-function priceFilter(product: Product, filter: Filter) {
+function filterPrice(product: Product, filter: Filter) {
     const afterDiscount = (product.price * ((100-product.discountPercentage)/100));
 
     if (filter.minPrice && filter.maxPrice) {
@@ -54,18 +54,18 @@ function priceFilter(product: Product, filter: Filter) {
     }
 }
 
-function ratingFilter(product: Product, filter: Filter) {
+function filterRating(product: Product, filter: Filter) {
     if (filter.rating) return product.rating >= filter.rating;
 }
 
-function brandFilter(product: Product, filter: Filter) {
+function filterBrand(product: Product, filter: Filter) {
     return filter.brand.includes(product.brand ?? "");
 }
 
-function categoryFilter(product: Product, filter: Filter) {
+function filterCategory(product: Product, filter: Filter) {
     return filter.category.includes(product.category);
 }
 
-function tagsFilter(product: Product, filter: Filter) {
+function filterTags(product: Product, filter: Filter) {
     return filter.tags.some(filterTag => product.tags.includes(filterTag));
 }

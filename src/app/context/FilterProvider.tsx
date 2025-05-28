@@ -7,7 +7,7 @@ interface FilterContextType {
     setFilter: Dispatch<SetStateAction<Filter>>
 }
 
-const FilterContext = createContext<FilterContextType | undefined>(undefined);
+const FilterContext = createContext<FilterContextType | null>(null);
 
 export function useFilterContext() {
     const filter = useContext(FilterContext);

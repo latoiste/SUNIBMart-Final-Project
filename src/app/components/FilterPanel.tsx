@@ -1,3 +1,4 @@
+"use client";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import AvailabilityFilter from "./filters/AvailabilityFilter";
@@ -6,14 +7,24 @@ import CategoryFilter from "./filters/CategoryFilter";
 import PriceFilter from "./filters/PriceFilter";
 import RatingFilter from "./filters/RatingFilter";
 import TagsFilter from "./filters/TagsFilter";
+import { useFilterContext } from "../context/FilterProvider";
 
 function FilterPanel() {
+    const { setFilter } = useFilterContext();
+
     return (
         <Accordion className="w-full" defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <p className="text-4xl font-bold text-yellow-500">Filter</p>
             </AccordionSummary>
-            <AccordionDetails className="space-y-4">                    
+            <AccordionDetails className="space-y-4">
+                <button onClick={() => 
+                        setFilter({brand: [],
+                            category: [],
+                            tags: [],
+                            rating: 1,
+                            availability: false,})} 
+                        className="w-full btn-outline p-1">Reset</button>
                 <AvailabilityFilter/>
                 <hr className="text-yellow-500"/>
                 <PriceFilter/>

@@ -61,3 +61,13 @@ export interface Filter {
     rating: number,
     availability?: boolean, 
 }
+
+export type SortOrder = "ascending" | "descending";
+
+export interface Sort {
+    price?: SortOrder,
+    rating?: SortOrder,
+    discount?: SortOrder,
+    stock?: SortOrder,
+    minOrder?: SortOrder,
+}
