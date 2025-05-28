@@ -6,13 +6,13 @@ import DiscountSort from "./sort/DiscountSort";
 import { useSortContext } from "../context/SortProvider";
 import StockSort from "./sort/StockSort";
 import RatingSort from "./sort/RatingSort";
-import MinOrderStock from "./sort/MinOrderStock";
+import MinOrderSort from "./sort/MinOrderSort";
 
 function SortPanel() {
     const { setSort } = useSortContext();
 
     return (
-        <Accordion>
+        <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <p className="text-4xl font-bold text-yellow-500">Sort</p>
             </AccordionSummary>
@@ -26,7 +26,7 @@ function SortPanel() {
                 <hr className="text-yellow-500"/>
                 <StockSort/>
                 <hr className="text-yellow-500"/>
-                <MinOrderStock/>
+                <MinOrderSort/>
             </AccordionDetails>
         </Accordion>
     )

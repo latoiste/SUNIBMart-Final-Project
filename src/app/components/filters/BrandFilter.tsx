@@ -7,13 +7,20 @@ import { useFilterContext } from "@/app/context/FilterProvider";
 function BrandFilter() {
     const [selectedBrand, setSelectedBrand] = useState<string[]>([]);
     const products = useProductContext();
-    const { setFilter } = useFilterContext();
+    const { filter, setFilter } = useFilterContext();
     const brands: string[] = [];
 
     useEffect(() => {
         setFilter(f => ({...f, brand: [...selectedBrand]}));
     }, [selectedBrand]);
-    
+
+    useEffect(() => {
+        //kalo filter di reset,
+        if (filter.brand.length === 0 && selectedBrand.length > 0) {
+            setSelectedBrand([])
+        }
+    }, [filter.brand]);
+
     products?.forEach(product => {
         const brand = product.brand;
         if (brand && !brands.includes(brand)) {
@@ -25,7 +32,7 @@ function BrandFilter() {
     return (
         <>
             <p className="text-2xl font-semibold">Brand</p>
-            <Scrollable filterOptions={brands} setSelected={setSelectedBrand}></Scrollable>
+            <Scrollable filterOptions={brands} selected={filter.brand} setSelected={setSelectedBrand}></Scrollable>
         </>
     )
 }

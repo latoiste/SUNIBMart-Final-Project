@@ -1,19 +1,9 @@
 "use client";
 import Navbar from "../components/Navbar"
-import { useProductContext } from "../context/ProductProvider"
+import { useFilterContext } from "../context/FilterProvider"
 
 function Test() {
-    const products = useProductContext();
-    const brands: string[] = [];
-    
-    products?.forEach(product => {
-        const brand = product.brand;
-        if (brand && !brands.includes(brand)) {
-            brands.push(brand);
-        }
-    });
-    console.log(brands)
-
+    // const {filter} = useFilterContext();
     return (
         <>
             <Navbar/>

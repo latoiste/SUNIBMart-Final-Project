@@ -11,9 +11,14 @@ function TagsFilter() {
     const tags: string[] = [];
 
     useEffect(() => {
-        console.log(filter);
         setFilter(f => ({...f, tags: [...selectedTag]}));
     }, [selectedTag]);
+
+    useEffect(() => {
+        if (filter.tags.length === 0 && selectedTag.length > 0) {
+            setSelectedTag([])
+        }
+    }, [filter.tags]);
 
     products?.forEach(product => {
         const tag = product.tags;
@@ -28,7 +33,7 @@ function TagsFilter() {
     return (
         <>
             <p className="text-2xl font-semibold">Tags</p>
-            <Scrollable filterOptions={tags} setSelected={setSelectedTag}></Scrollable>
+            <Scrollable filterOptions={tags} selected={selectedTag} setSelected={setSelectedTag}></Scrollable>
         </>
     )
 }

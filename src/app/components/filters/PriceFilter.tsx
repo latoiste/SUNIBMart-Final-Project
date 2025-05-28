@@ -1,19 +1,28 @@
 "use client";
 import { useFilterContext } from "@/app/context/FilterProvider";
 import InputField from "../InputField";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function PriceFilter() {
-    const { setFilter } = useFilterContext();
+    const { filter, setFilter } = useFilterContext();
     const [minPrice, setMinPrice] = useState("");
     const [maxPrice, setMaxPrice] = useState("");
+
+    useEffect(() => {
+        //kalo ke reset
+        if (!filter.minPrice && !filter.maxPrice) {
+            setMinPrice("");
+            setMaxPrice("");
+        }
+    }, [filter.minPrice, filter.maxPrice]);
 
     function handleSubmit(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === "Enter") {
             setFilter(f => ({
                 ...f, 
                 minPrice: (Number(minPrice) ?? null), 
-                maxPrice: (Number(maxPrice) ?? null)}));
+                maxPrice: (Number(maxPrice) ?? null)
+            }));
         }
     }
     
