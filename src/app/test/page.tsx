@@ -1,13 +1,26 @@
 "use client";
+import FilterPanel from "../components/FilterPanel";
 import Navbar from "../components/Navbar"
-import { useFilterContext } from "../context/FilterProvider"
+import PriceSort from "../components/sort/PriceSort";
+import SortPanel from "../components/SortPanel";
+import FilterProvider, { useFilterContext } from "../context/FilterProvider"
+import SortProvider from "../context/SortProvider";
 
 function Test() {
     // const {filter} = useFilterContext();
     return (
-        <>
-            <Navbar/>
-            <h1 className="p-10">YOOOO</h1>
+        <>  
+        <div className="w-1/5">
+            <SortProvider>
+                <FilterProvider>
+                    <Navbar/>
+                    <div className="pt-26">
+                        <PriceSort/>
+                        {/* <button>aaaaa</button> */}
+                    </div>
+                </FilterProvider>
+            </SortProvider>
+        </div>
         </>
     )
 }

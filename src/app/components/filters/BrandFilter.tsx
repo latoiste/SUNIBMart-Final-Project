@@ -15,7 +15,7 @@ function BrandFilter() {
     }, [selectedBrand]);
 
     useEffect(() => {
-        //kalo filter di reset,
+        //kalo filter di reset, selectedBrand.length > 0 biar ga infinite loop
         if (filter.brand.length === 0 && selectedBrand.length > 0) {
             setSelectedBrand([])
         }

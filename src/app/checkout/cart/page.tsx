@@ -3,20 +3,21 @@ import { useEffect, useState } from "react";
 import CartDisplay from "../../components/CartDisplay";
 import Navbar from "../../components/Navbar"
 import { useUserContext } from "../../context/UserProvider"
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import PaymentPanel from "@/app/components/PaymentPanel";
 
 function Cart() {
-    const [total, setTotal] = useState("0");
     const user = useUserContext();
-    const shoppingCart = user?.user?.shoppingCart;
+    const router = useRouter();
+    const [total, setTotal] = useState("0");
+    const shoppingCart = user.user?.shoppingCart;
     
     useEffect(() => {
         let prices = shoppingCart?.reduce((price, item) => price + item.price, 0).toFixed(2);
         prices ? setTotal(prices) : setTotal("0");
     }, [shoppingCart]);
 
-    if (!user?.loggedIn) redirect("/register");
+    if (!user.loggedIn) router.push("/register");
 
     return (
         <>

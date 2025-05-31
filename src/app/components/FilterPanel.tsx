@@ -13,7 +13,7 @@ function FilterPanel() {
     const { setFilter } = useFilterContext();
 
     return (
-        <Accordion className="w-full" defaultExpanded>
+        <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
                 <p className="text-4xl font-bold text-yellow-500">Filter</p>
             </AccordionSummary>

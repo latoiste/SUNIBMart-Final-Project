@@ -8,7 +8,7 @@ function CartDisplay({ item }: {item: CartItem}) {
     const user = useUserContext();
 
     useEffect(() => {
-        user?.updateCart(item, quantity);
+        user.updateCart(item, quantity);
     }, [quantity]);
 
     return (

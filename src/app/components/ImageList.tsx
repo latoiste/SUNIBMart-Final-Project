@@ -5,7 +5,7 @@ function ImageList({ images }: {images: string[]}) {
     const [selected, setselected] = useState(0)
 
     return (
-        <div className="flex-none">
+        <div className="flex-none w-100">
             <img src={images[selected]} alt={`Images ${selected}`} className="w-100 h-100 rounded-xl border-2 border-gray-100"/>
             <div className="mt-2 flex flex-wrap gap-2">
                 {images.map((image, index) => 

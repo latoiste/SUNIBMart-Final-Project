@@ -1,10 +1,15 @@
+"use client";
 import { useSortContext } from "@/app/context/SortProvider";
 import { Sort, SortOrder } from "@/app/types";
 import { useEffect, useState } from "react";
 
 function SortOption({ option }: {option: keyof Sort}) {
-    const { setSort } = useSortContext();
-    const [order, setOrder] = useState<SortOrder>();
+    const { sort, setSort } = useSortContext();
+    const [order, setOrder] = useState<SortOrder | undefined>(sort[option]);
+    
+    useEffect(() => {
+        setOrder(sort[option]);
+    }, [sort[option]]);
 
     return (
         <>
@@ -17,7 +22,10 @@ function SortOption({ option }: {option: keyof Sort}) {
                 <label htmlFor={`${option}Dsc`}>Highest to lowest</label>
             </div>
             <div className="space-x-4">
-                <button onClick={() => setSort(s => ({...s, [option]: order}))} className="btn-outline p-2 mt-2">Apply</button>
+            <button onClick={() => {
+                if (order) setSort(s => ({...s, [option]: order}));
+                }} 
+                className="btn-outline p-2 mt-2">Apply</button>
             </div>
         </>
     );

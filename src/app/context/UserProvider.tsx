@@ -17,7 +17,7 @@ const UserContext = createContext<UserContextType | null>(null);
 export function useUserContext() {
     const user = useContext(UserContext);
     if (!user) {
-        return null;
+        throw new Error("mmmmmmmmmmmmmm");
     }
     return user;
 }

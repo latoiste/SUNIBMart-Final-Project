@@ -27,7 +27,7 @@ function Register() {
                 shoppingCart: [],
             };
             users.push(newUser);
-            user?.login(newUser);
+            user.login(newUser);
             //add new user
             localStorage.setItem("Users", JSON.stringify(users));
             //forces rerender

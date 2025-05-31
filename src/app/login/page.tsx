@@ -24,7 +24,7 @@ function Login() {
 
         if (loggedInUser) {
             setLoading(true);
-            user?.login(loggedInUser);
+            user.login(loggedInUser);
             router.push("/");
         }
         else setError("Username or password doesn't match!")
