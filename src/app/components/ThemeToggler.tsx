@@ -16,6 +16,7 @@ function ThemeToggler() {
         setTheme(theme === "dark" ? "light" : "dark");
     }
 
+    //hydration error saat ngambil theme dari local storage
     if (!mounted) return null;
 
     return (

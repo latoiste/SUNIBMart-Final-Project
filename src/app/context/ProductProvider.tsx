@@ -8,10 +8,8 @@ const ProductContext = createContext<Product[] | null>(null);
 export function useProductContext() {
     const product = useContext(ProductContext);
     if (!product) {
-        // throw new Error("yoooo");
         return null;
     }
-    // console.log("product", product[0])
     return product;
 }
 

@@ -1,21 +1,36 @@
 "use client";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useProductContext } from "../context/ProductProvider";
 import Navbar from "../components/Navbar";
 import ItemDisplay from "../components/ItemDisplay";
 import PaymentPanel from "../components/PaymentPanel";
+import { Suspense } from "react";
+
+function CheckoutPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Checkout/>
+        </Suspense>
+    )
+}
+export default CheckoutPage;
 
 function Checkout() {
+    const router = useRouter();
+    const products = useProductContext();
     const searchParams = useSearchParams();
     const id = Number(searchParams.get("id"));
     const quantity = Number(searchParams.get("quantity"));
     
-    const products = useProductContext();
+    if (!id || !quantity) {
+        router.push("/");
+        return;
+    }
+
     if (!products) return null;
     const product = products[id - 1];
     const subtotal = (quantity * product.price * ((100-product.discountPercentage)/100)).toFixed(2);
-    
-    // TODO: make error page if id and quantity inst given or id isnt found
+
     return (
         <>
             <Navbar/>
@@ -33,4 +48,3 @@ function Checkout() {
         </>
     )
 }
-export default Checkout;

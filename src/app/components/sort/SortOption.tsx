@@ -1,24 +1,20 @@
 "use client";
 import { useSortContext } from "@/app/context/SortProvider";
 import { Sort, SortOrder } from "@/app/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function SortOption({ option }: {option: keyof Sort}) {
     const { sort, setSort } = useSortContext();
     const [order, setOrder] = useState<SortOrder | undefined>(sort[option]);
-    
-    useEffect(() => {
-        setOrder(sort[option]);
-    }, [sort[option]]);
 
     return (
         <>
             <div className="flex space-x-2 items-center">
-                <input onChange={() => setOrder("ascending")} type="radio" name={`${option}Order`} id={`${option}Asc`} checked={order === "ascending"}/>
+                <input onChange={() => setOrder("ascending")} type="radio" name={`${option}Order`} id={`${option}Asc`}/>
                 <label htmlFor={`${option}Asc`}>Lowest to highest</label>
             </div>
             <div className="flex space-x-2 items-center">
-                <input onChange={() => setOrder("descending")} type="radio" name={`${option}Order`} id={`${option}Dsc`} checked={order === "descending"}/>
+                <input onChange={() => setOrder("descending")} type="radio" name={`${option}Order`} id={`${option}Dsc`}/>
                 <label htmlFor={`${option}Dsc`}>Highest to lowest</label>
             </div>
             <div className="space-x-4">

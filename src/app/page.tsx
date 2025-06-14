@@ -8,19 +8,19 @@ import FilterPanel from "./components/FilterPanel";
 import SortPanel from "./components/SortPanel";
 import LoadingOverlay from "./components/LoadingOverlay";
 
-function Home() {
+function HomePage() {
   //biar dalem Content, useFilterContext ga null
   return (
     <FilterProvider>
       <SortProvider>
-        <Content />
+        <Home/>
       </SortProvider>
     </FilterProvider>
   );
 }
-export default Home;
+export default HomePage;
 
-function Content() {
+function Home() {
   const products = useProductContext();
 
   return (

@@ -12,7 +12,7 @@ const FilterContext = createContext<FilterContextType | null>(null);
 export function useFilterContext() {
     const filter = useContext(FilterContext);
     if (!filter) {
-        throw new Error("AAAAAAAAAAAAAAa");
+        throw new Error("askjdbah");
     }
     return filter;
 }

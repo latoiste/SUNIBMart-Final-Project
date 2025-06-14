@@ -9,19 +9,22 @@ import SortProvider from "../context/SortProvider";
 import FilterPanel from "../components/FilterPanel";
 import SortPanel from "../components/SortPanel";
 import LoadingOverlay from "../components/LoadingOverlay";
+import { Suspense } from "react";
 
-function Search() {
+function SearchPage() {
     return (
         <FilterProvider>
             <SortProvider>
-                <Content/>
+                <Suspense>
+                    <Search/>
+                </Suspense>
             </SortProvider>
         </FilterProvider>
     )
 }
-export default Search;
+export default SearchPage;
 
-function Content() {
+function Search() {
     const products = useProductContext();
     const searchParams = useSearchParams();
     const router = useRouter();

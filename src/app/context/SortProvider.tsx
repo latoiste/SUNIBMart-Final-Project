@@ -12,7 +12,7 @@ const SortContext = createContext<SortContextType | null>(null);
 export function useSortContext() {
     const sort = useContext(SortContext);
     if (!sort) {
-        throw new Error("AAAAAAAAAAAAAAa");
+        throw new Error("bgbfhfgh");
     }
     return sort;
 }
