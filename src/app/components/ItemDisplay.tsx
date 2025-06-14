@@ -8,7 +8,7 @@ function ItemDisplay({ product, quantity, setQuantity, showCounter = false }: {p
 
     return (
         <div className="flex w-full h-auto space-x-2">
-            <img className={`border-e-2 border-gray-100 size-24`} src={product.thumbnail} alt={product.title} />
+            <img className={`border-e-2 border-gray-100 dark:border-neutral-800 size-24`} src={product.thumbnail} alt={product.title} />
             <div className="w-full h-auto flex flex-col justify-between">
                 <div className="flex space-x-2 h-fit justify-between">
                     <p className="font-semibold">{product.title}</p>

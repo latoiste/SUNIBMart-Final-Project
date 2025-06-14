@@ -14,7 +14,7 @@ function Reviewer({ review }: {review: Review}) {
     }
 
     return (
-        <div className="w-full border-b-2 border-gray-100">
+        <div className="w-full border-b-2 border-gray-100 dark:border-neutral-800">
             <div className="flex items-baseline space-x-2">
                 <p className="text-lg font-semibold">{review.reviewerName}</p>
                 <p className="text-sm text-gray-600">{review.reviewerEmail}</p>

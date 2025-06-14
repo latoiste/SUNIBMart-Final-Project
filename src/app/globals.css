@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer theme {
+    .dark {
+        background-color: black;
+        color: var(--color-gray-300);
+    }
+}
+
+/* .dark * {
+    border-color: var(--color-neutral-600);
+} */
+
 @layer utilities {
     .counterButton {
         height: calc(var(--spacing) * 8);

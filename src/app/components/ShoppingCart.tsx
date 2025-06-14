@@ -1,19 +1,19 @@
+"use client";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 function ShoppingCart() {
-    const [show, setShow] = useState(false);
     const router = useRouter()
 
     return (
-        <div className="flex justify-center">
-            <AiOutlineShoppingCart onClick={() => router.push("/checkout/cart")} onMouseEnter={() => setShow(true)} className="text-4xl p-1 h-full w-auto text-yellow-500 rounded-xl transition duration-100 hover:bg-gray-200"/>
-            {/* {show && 
-                <div onMouseLeave={() => setShow(false)} className="absolute top-4/5 p-2 border-2 border-black">
-                    {shoppingCart?.map((item, index) => <ItemDisplay key={index} product={item.product} quantity={item.quantity}></ItemDisplay>)}
-                </div>} */}
+        <div className="text-4xl p-1 w-auto text-yellow-500 rounded-xl transition duration-100 hover:bg-gray-200 dark:hover:bg-neutral-700">
+            <AiOutlineShoppingCart onClick={() => router.push("/checkout/cart")}/>
         </div>
     )
+    // return (
+    //     <div className="flex justify-center">
+    //         <AiOutlineShoppingCart onClick={() => router.push("/checkout/cart")} className="text-4xl p-1 h-full w-auto text-yellow-500 rounded-xl transition duration-100 hover:bg-gray-200 dark:hover:bg-neutral-700"/>
+    //     </div>
+    // )
 }
 export default ShoppingCart;

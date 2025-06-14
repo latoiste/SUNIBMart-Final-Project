@@ -61,10 +61,10 @@ function Register() {
     return (
             <div className="h-screen flex justify-center items-center">
                 <p className="mx-4 font-bold text-yellow-500 text-5xl absolute top-5">SUNIBMart</p>
-                <div className="w-2/7 h-auto p-4 space-y-6 rounded-2xl border-2 border-gray-100">
+                <div className="w-2/7 h-auto p-4 space-y-6 rounded-2xl border-2 border-gray-100 dark:border-neutral-800">
                     <div className="flex items-baseline">
                         <p className="grow text-4xl font-bold text-yellow-500">Register</p>
-                        <p className="text-xs text-black me-1">Already have an account?</p>
+                        <p className="text-xs me-1">Already have an account?</p>
                         <Link href="/login" className="text-xs underline hover:text-yellow-500">Login</Link>
                     </div>
                     <div>

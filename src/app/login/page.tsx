@@ -33,7 +33,7 @@ function Login() {
     return (
             <div className="h-screen flex justify-center items-center">
                 <p className="mx-4 font-bold text-yellow-500 text-5xl absolute top-5">SUNIBMart</p>
-                <div className="w-2/7 h-auto p-4 space-y-6 rounded-2xl border-2 border-gray-100">
+                <div className="w-2/7 h-auto p-4 space-y-6 rounded-2xl border-2 border-gray-100 dark:border-neutral-800">
                     <p className="grow text-4xl font-bold text-yellow-500">Login</p>
                     <InputField query={username} setQuery={setUsername} placeholder="Username"/>
                     <InputField query={password} setQuery={setPassword} placeholder="Password"/>

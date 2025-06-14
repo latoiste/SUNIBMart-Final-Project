@@ -38,7 +38,7 @@ function ActionPanel({ product }: {product: Product}) {
     }, [text]);
 
     return (
-        <div className="w-64 h-90 p-4 space-y-5 rounded-xl border-2 border-gray-100">
+        <div className="w-64 h-90 p-4 space-y-5 rounded-xl border-2 border-gray-100 dark:border-neutral-800">
             <p className="text-3xl font-semibold">Order</p>
             <Counter product={product} quantity={quantity} setQuantity={setQuantity} disabled={outOfStock}/>
             <p>Stock: {product.stock}</p>

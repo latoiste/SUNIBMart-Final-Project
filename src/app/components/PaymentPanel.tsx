@@ -9,7 +9,7 @@ function PaymentPanel() {
     const disableButton = !(shipping && paymentMethod);
 
     return (
-        <div className="p-3 w-1/4 h-fit space-y-4 border-2 rounded-s-2xl border-gray-100">
+        <div className="p-3 w-1/4 h-fit space-y-4 border-2 rounded-s-2xl border-gray-100 dark:border-neutral-800">
             <p className="font-bold text-3xl text-yellow-500">Checkout</p>
             <p className="text-2xl font-semibold">Shipping Address</p>
             <InputField query={shipping} setQuery={setShipping} placeholder="Shipping Address"/>

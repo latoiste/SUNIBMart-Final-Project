@@ -21,10 +21,10 @@ function Checkout() {
             <Navbar/>
             <div className="flex pt-26 pb-4 justify-center">
                 <PaymentPanel/>
-                <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-s-0 border-gray-100">
+                <div className="p-3 w-1/4 h-fit space-y-4 rounded-e-2xl border-2 border-s-0 border-gray-100 dark:border-neutral-800">
                     <p className="font-bold text-3xl text-yellow-500">Payment summary</p>
                     <ItemDisplay product={product} quantity={quantity}/>
-                    <div className="flex justify-between border-t-2 border-gray-100 pt-3">
+                    <div className="flex justify-between border-t-2 border-gray-100 dark:border-neutral-800 pt-3">
                         <p className="grow">Total</p>
                         <p>${subtotal}</p>
                     </div>
