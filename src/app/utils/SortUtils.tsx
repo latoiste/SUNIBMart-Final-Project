@@ -1,7 +1,7 @@
 import { Product, Sort, SortOrder } from "../types";
 
 export function applySort(products: Product[], sort: Sort) {
-    let sortedProducts = [...products];
+    const sortedProducts = [...products];
     
     if (sort.price) {
         sortPrice(sortedProducts, sort.price);

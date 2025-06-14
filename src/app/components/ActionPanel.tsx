@@ -63,7 +63,11 @@ function ActionPanel({ product }: {product: Product}) {
                 className={`btn-filled ${outOfStock ? "btn-filled--gray" : ""}`}>{loading ? <BarLoader color="white"/> : "Checkout"}</button>
             
             <button disabled={outOfStock} onClick={() => {
-                user.loggedIn ? setText("Added to cart!") : router.push("/register");
+                if (user.loggedIn) {
+                    setText("Added to cart!");
+                } else {
+                    router.push("/register");
+                } 
                 handleShoppingCart();
             }} 
                 className={`btn-filled ${outOfStock ? "btn-filled--gray" : ""}`}>{text}</button>
