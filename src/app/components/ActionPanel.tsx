@@ -25,7 +25,11 @@ function ActionPanel({ product }: {product: Product}) {
             const shoppingCart: CartItem[] | undefined = user.user?.shoppingCart;
             const duplicateItem: CartItem | undefined = shoppingCart?.find(cartItem => cartItem.product.id === item.product.id);
             
-            duplicateItem ? user.updateCart(item, item.quantity) : user.addToCart(item);
+            if (duplicateItem) {
+                user.updateCart(item, item.quantity);
+            } else {
+                user.addToCart(item);
+            }
         }
     }
 
@@ -50,7 +54,11 @@ function ActionPanel({ product }: {product: Product}) {
 
             <button disabled={outOfStock} onClick={() => {
                 setLoading(true);
-                user.loggedIn ? router.push(`/checkout?id=${product.id}&quantity=${quantity}`) : router.push("/register");
+                if (user.loggedIn) {
+                    router.push(`/checkout?id=${product.id}&quantity=${quantity}`);
+                } else {
+                    router.push("/register");
+                }
             }} 
                 className={`btn-filled ${outOfStock ? "btn-filled--gray" : ""}`}>{loading ? <BarLoader color="white"/> : "Checkout"}</button>
             

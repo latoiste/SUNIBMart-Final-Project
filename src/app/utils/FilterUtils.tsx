@@ -1,7 +1,7 @@
 import { Filter, Product } from "../types";
 
 export function applyFilters(products: Product[], filter: Filter) {
-    var filteredProducts = products;
+    let filteredProducts = products;
     
     //availability
     if (filter.availability) {

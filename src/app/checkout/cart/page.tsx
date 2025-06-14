@@ -13,8 +13,8 @@ function Cart() {
     const shoppingCart = user.user?.shoppingCart;
     
     useEffect(() => {
-        let prices = shoppingCart?.reduce((price, item) => price + item.price, 0).toFixed(2);
-        prices ? setTotal(prices) : setTotal("0");
+        const prices = shoppingCart?.reduce((price, item) => price + item.price, 0).toFixed(2);
+        setTotal(prices ?? "0");
     }, [shoppingCart]);
 
     if (!user.loggedIn) router.push("/register");

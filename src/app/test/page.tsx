@@ -1,9 +1,7 @@
 "use client";
-import FilterPanel from "../components/FilterPanel";
 import Navbar from "../components/Navbar"
 import PriceSort from "../components/sort/PriceSort";
-import SortPanel from "../components/SortPanel";
-import FilterProvider, { useFilterContext } from "../context/FilterProvider"
+import FilterProvider from "../context/FilterProvider"
 import SortProvider from "../context/SortProvider";
 
 function Test() {

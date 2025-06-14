@@ -9,7 +9,6 @@ import SortProvider from "../context/SortProvider";
 import FilterPanel from "../components/FilterPanel";
 import SortPanel from "../components/SortPanel";
 import LoadingOverlay from "../components/LoadingOverlay";
-import { useEffect } from "react";
 
 function Search() {
     return (

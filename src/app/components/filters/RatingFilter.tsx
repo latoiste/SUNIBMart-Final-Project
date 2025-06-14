@@ -1,6 +1,5 @@
 "use client";
 import { useFilterContext } from "@/app/context/FilterProvider";
-import { useEffect, useState } from "react";
 
 function RatingFilter() {
     const { filter, setFilter } = useFilterContext();
