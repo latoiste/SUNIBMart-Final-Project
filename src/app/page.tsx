@@ -22,7 +22,7 @@ export default HomePage;
 
 function Home() {
   const products = useProductContext();
-
+  
   return (
     <>
       <Navbar />
@@ -37,7 +37,7 @@ function Home() {
           {products ?
             <ProductDisplay products={products} />
             :
-            <div className="w-full h-screen fixed">
+            <div className="w-4/5 h-screen fixed">
               <LoadingOverlay/>
             </div>
           }

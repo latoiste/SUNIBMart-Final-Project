@@ -6,7 +6,7 @@ function AppWrapper({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
     return (
-        <ThemeProvider attribute="class">
+        <ThemeProvider defaultTheme="light" attribute="class">
             <UserProvider>
                 <ProductProvider>
                     {children}
